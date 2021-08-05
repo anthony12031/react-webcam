@@ -343,6 +343,9 @@ export default class Webcam extends React.Component<WebcamProps, WebcamState> {
 
     try {
       if (this.video) {
+        if (this.video.hasOwnProperty('srcObject')) {
+          throw new Error('srcObject not available');
+        }
         this.video.srcObject = stream;
       }
       this.setState({ hasUserMedia: true });
